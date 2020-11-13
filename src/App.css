@@ -6,10 +6,123 @@ html{
   background-color: rgb(80, 80, 80);
 }
 
+.home-page{
+  align-items: center;
+  text-align: center;
+  color: white;
+}
 
-img{
+
+.logo{
   padding: 1%;
   justify-content: center;
   max-width: 5%;
   height: auto;
+}
+
+.iconButton span.linkClass{
+  cursor: pointer;
+  display: inline;
+  position: relative;
+  transition: 0.5s;
+}
+
+.iconButton span.linkClass:after {
+  align-items: center; 
+  position: absolute;
+  opacity: 0;
+  top: 30%;
+  right: 0px;
+  transition: 0.5s;
+  content: 'LinkedIn';
+}
+
+.iconButton:hover span.linkClass {
+  padding-right: 100px;
+}
+
+.iconButton:hover span.linkClass:after {
+  opacity: 1;
+  right: -10;
+}
+
+.iconButton span.gitClass{
+  cursor: pointer;
+  display: inline;
+  position: relative;
+  transition: 0.5s;
+}
+
+.iconButton span.gitClass:after {
+  align-items: center; 
+  position: absolute;
+  opacity: 0;
+  top: 30%;
+  right: 0px;
+  transition: 0.5s;
+  content: 'Github';
+}
+
+.iconButton:hover span.gitClass {
+  padding-right: 100px;
+}
+
+.iconButton:hover span.gitClass:after {
+  opacity: 1;
+  right: -10;
+}
+
+.iconButton span.resumeClass{
+  cursor: pointer;
+  display: inline;
+  position: relative;
+  transition: 0.5s;
+}
+
+.iconButton span.resumeClass:after {
+  align-items: center; 
+  position: absolute;
+  opacity: 0;
+  top: 30%;
+  right: 0px;
+  transition: 0.5s;
+  content: 'Résumé';
+}
+
+.iconButton:hover span.resumeClass {
+  padding-right: 100px;
+}
+
+.iconButton:hover span.resumeClass:after {
+  opacity: 1;
+  right: -10;
+}
+
+.project-card{
+  display: flex;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-child{
+  flex: 1;
+  padding: 4%;
+}
+
+.project-child2{
+  flex: 1;
+  align-items: center;
+  padding: 4%;
+}
+.project-image{
+  width: 90vh;
+}
+
+.project-title{
+  text-align: center;
+  color: white;
+}
+
+.about{
+  color: white;
 }
