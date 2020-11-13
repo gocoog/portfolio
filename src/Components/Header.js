@@ -50,48 +50,73 @@ export default function Header() {
     <div className={classes.root}>
     <AppBar style={{ background: 'none'}} elevation={0} position="static">
       <Toolbar>
-        <img className="logo" src={logo}></img>
+        <img className="logo" src={logo} />
         <Link to="/" className={classes.textLink} >
           <ThemeProvider theme={theme}>
             <Typography variant="h3">Home</Typography>
           </ThemeProvider>
         </Link>
-        <Link to="/projects" className={classes.textLink} style={{ flex: 1 }}>
+        <Link to="/projects" className={classes.textLink} >
         <ThemeProvider theme={theme}>
             <Typography variant="h3">Projects</Typography>
           </ThemeProvider>
         </Link>
+        <Link to="/blogs" className={classes.textLink} >
+        <ThemeProvider theme={theme}>
+            <Typography variant="h3">Blogs</Typography>
+          </ThemeProvider>
+        </Link>
+        <Link to="/contact" className={classes.textLink} style={{ flex: 1 }} >
+          <ThemeProvider theme={theme}>
+            <Typography variant="h3">Contact Me</Typography>
+          </ThemeProvider>
+        </Link>
         <IconButton 
+        className="iconButton"
         edge="start" 
         color="inherit" 
         aria-label="linkedIn" 
         onClick={() => window.open('https://www.linkedin.com/in/wilmarreyes/')}>
-        <Box
+        <span className="linkClass"><Box
           clone
-          fontSize={{ sm: 38, md: 45, lg: 55, xl: 75 }}
+          fontSize={{xs:38, sm: 41, md: 45, lg: 55, xl: 75 }}
+          p={2}
         >
             <LinkedInIcon />
           </Box>
+          </span>
           </IconButton>
           <IconButton 
+          className="iconButton"
           edge="start" 
           color="inherit" 
           aria-label="github" 
           onClick={() => window.open('https://github.com/gocoog')}>
-          <Box
-          clone
-          fontSize={{ sm: 38, md: 45, lg: 55, xl: 75 }}
-        >
-            <GitHubIcon />
-          </Box>
+            <span className="gitClass">
+              <Box
+                clone
+                fontSize={{xs:38, sm: 41, md: 45, lg: 55, xl: 75 }}
+                p={2}
+              >
+                <GitHubIcon />
+              </Box>
+            </span>
           </IconButton>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <Box
-            clone
-            fontSize={{ sm: 38, md: 45, lg: 55, xl: 75 }}
-            >
-              <DescriptionIcon />
-            </Box>
+          <IconButton
+            className="iconButton" 
+            edge="start" 
+            color="inherit" 
+            aria-label="menu"
+            onClick={() => window.open('https://docs.google.com/document/d/e/2PACX-1vQo13Y2EBMNnIzCff7Ute95r7y24Ak8t8IKre4FjUsVlRpd1zodHrlyFFczE0XzBTKjlkiix-f_GP7J/pub')}>
+            <span className="resumeClass">
+              <Box
+              clone
+              fontSize={{xs:38, sm: 41, md: 45, lg: 55, xl: 75 }}
+              p={2}
+              >
+                <DescriptionIcon />
+              </Box>
+            </span>
           </IconButton>
       </Toolbar>
     </AppBar>
