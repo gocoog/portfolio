@@ -27,7 +27,7 @@ export default function Home() {
             <h4>I'm a full stack software engineer currently based in Houston, TX</h4>
             <h4>Feel free to look around my site and let's connect!</h4>
             <Link to="/projects" className={classes.textlink}>
-            <Button className={classes.button} variant="outlined">Projects</Button>
+            <Button className={classes.button} variant="outlined">View Projects</Button>
             </Link>
         </div>
     )

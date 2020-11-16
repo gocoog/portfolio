@@ -13,15 +13,15 @@ import Typography from '@material-ui/core/Typography';
 
 const theme = createMuiTheme();
 
-theme.typography.h3 = {
-  fontSize: '1.2rem',
-  '@media (min-width:600px)': {
-    fontSize: '1.5rem',
-  },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '1.9rem',
-  },
-};
+// theme.typography.h3 = {
+//   fontSize: '.7rem',
+//   '@media (min-width:600px)': {
+//     fontSize: '1rem',
+//   },
+//   [theme.breakpoints.up('md')]: {
+//     fontSize: '1.4rem',
+//   },
+// };
 
 const handleClick = (e) => {
   e.preventDefault()
@@ -53,22 +53,22 @@ export default function Header() {
         <img className="logo" src={logo} />
         <Link to="/" className={classes.textLink} >
           <ThemeProvider theme={theme}>
-            <Typography variant="h3">Home</Typography>
+            <Typography variant="h4">Home</Typography>
           </ThemeProvider>
         </Link>
         <Link to="/projects" className={classes.textLink} >
         <ThemeProvider theme={theme}>
-            <Typography variant="h3">Projects</Typography>
+            <Typography variant="h4">Projects</Typography>
           </ThemeProvider>
         </Link>
         <Link to="/blogs" className={classes.textLink} >
         <ThemeProvider theme={theme}>
-            <Typography variant="h3">Blogs</Typography>
+            <Typography variant="h4">Blogs</Typography>
           </ThemeProvider>
         </Link>
         <Link to="/contact" className={classes.textLink} style={{ flex: 1 }} >
           <ThemeProvider theme={theme}>
-            <Typography variant="h3">Contact Me</Typography>
+            <Typography variant="h4">Contact Me</Typography>
           </ThemeProvider>
         </Link>
         <IconButton 

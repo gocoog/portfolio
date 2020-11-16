@@ -126,3 +126,7 @@ html{
 .about{
   color: white;
 }
+
+.TextField.MuiInputBase-input{
+  outline-color: white;
+}

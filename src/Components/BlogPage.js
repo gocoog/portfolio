@@ -1,58 +1,68 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import BookIcon from '@material-ui/icons/Book';
 
-const useStyles = makeStyles((theme) => ({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+const useStyles = makeStyles({
+    root: {
+      maxWidth: 545,
+      maxHeight: 'auto',
+      margin: '30px',
     },
-    paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-    button: {
-        margin: theme.spacing(1),
-      },
-  }));
+  });
+
+  const tagToText = (node) => {
+    let tag = document.createElement('div')
+    tag.innerHTML = node
+    node = tag.innerText
+    return node
+  }
+
+  const shortenText = (text,startingPoint ,maxLength) => {
+    return text.length > maxLength?
+    text.slice(startingPoint, maxLength):
+    text
+  }
 
 export default function BlogPage(props) {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     return (
-        <div>
-            {console.log(props.blog)}
-            <h1 onClick={handleOpen}>{props.blog.title}</h1>
-            <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    className={classes.modal}
-                    open={open}
-                    onClose={handleClose}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                    timeout: 500,
-                    }}
-                >
-                    <Fade in={open}>
+        <Card className={classes.root}>
+            <CardActionArea onClick={() => window.open(props.blog.link)}>
+                <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                height="300"
+                image={props.blog.thumbnail}
+                title="mediumThumbnail"
+                />
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
                     {props.blog.title}
-                    </Fade>
-                </Modal>
-        </div>
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {shortenText(tagToText(props.blog.description), 0, 150) + '...'}
+                </Typography>
+                </CardContent>
+            </CardActionArea>
+            <CardActions>
+            <Button
+                    variant="contained"
+                    color="default"
+                    className={classes.button}
+                    startIcon={<BookIcon />}
+                    onClick={() => window.open(props.blog.link)}
+                >
+                    Read More!
+                </Button>
+            </CardActions>
+        </Card>
     )
 }
