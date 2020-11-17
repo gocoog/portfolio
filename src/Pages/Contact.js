@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import emailjs from 'emailjs-com';
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -70,19 +73,37 @@ const useStyles = makeStyles((theme) => ({
   export default function Contact() {
         const classes = useStyles();
 
-        const [inputValues, setInputValues] = useReducer(
-            (state, newState) => ({ ...state, ...newState }),
-            {name: '', email: '', subject: '', message: ''}
-            );
-            
-        const handleOnChange = event => {
-            const { name, value } = event.target;
-            setInputValues({ [name]: value });
-        };
+        const [name, setName] = useState('')
+        const [email, setEmail] = useState('')
+        const [subject, setSubject] = useState('')
+        const [message, setMessage] = useState('')
+ 
+        const handleSubmit = (e) => {
+            e.preventDefault()
 
-        const handleSubmit = (name, email, subject, message) => {
-            console.log({name})
+            const templateParams = {
+                name: name,
+                email: email,
+                subject: subject,
+                message: message
+            };
+
+            const clear = () => {
+                setName('')
+                setEmail('')
+                setSubject('')
+                setMessage('')
+            }
+            
+            emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, templateParams, process.env.REACT_APP_USER_ID)
+                .then((response) => {
+                   alert('Message succesfully sent! I will get in touch with you soon.', response.status, response.text)
+                   e.target.reset()
+                }, (err) => {
+                   alert('Failed to send message. Please try again.', err);
+                });
         }
+
         return (
             <Container maxWidth="xs">
             <div className={classes.paper}>
@@ -102,8 +123,9 @@ const useStyles = makeStyles((theme) => ({
                         id="name"
                         label="Name"
                         name="name"
+                        type="text"
                         autoFocus
-                        onChange={handleOnChange}
+                        onChange={(e) => setName(e.target.value)}
                     />
                 <TextField
                     className={classes.textfield}
@@ -115,31 +137,30 @@ const useStyles = makeStyles((theme) => ({
                     label="Email Address"
                     name="email"
                     type="email"
-                    autoComplete="email"
-                    onChange={handleOnChange}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                         className={classes.textfield}
-                        type="text"
                         variant="outlined"
                         margin="normal"
                         fullWidth
                         id="subject"
                         label="Subject"
                         name="subject"
-                        onChange={handleOnChange}
+                        onChange={(e) => setSubject(e.target.value)}
                     />
                 <TextField
                     className={classes.textfield}
+                    id="outlined-multiline-static"
+                    multiline
+                    rows={4}
                     variant="outlined"
                     margin="normal"
                     required
                     fullWidth
                     name="message"
                     label="Message"
-                    type="textbox"
-                    id="message"
-                    onChange={handleOnChange}
+                    onChange={(e) => setMessage(e.target.value)}
                 />
                 <Button
                     type="submit"
