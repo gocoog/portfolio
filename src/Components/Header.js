@@ -13,21 +13,6 @@ import Typography from '@material-ui/core/Typography';
 
 const theme = createMuiTheme();
 
-// theme.typography.h3 = {
-//   fontSize: '.7rem',
-//   '@media (min-width:600px)': {
-//     fontSize: '1rem',
-//   },
-//   [theme.breakpoints.up('md')]: {
-//     fontSize: '1.4rem',
-//   },
-// };
-
-const handleClick = (e) => {
-  e.preventDefault()
-  console.log(e.target.value)
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -50,7 +35,7 @@ export default function Header() {
     <div className={classes.root}>
     <AppBar style={{ background: 'none'}} elevation={0} position="static">
       <Toolbar>
-        <img className="logo" src={logo} />
+        <img className="logo" src={logo} alt="logo"/>
         <Link to="/" className={classes.textLink} >
           <ThemeProvider theme={theme}>
             <Typography variant="h4">Home</Typography>

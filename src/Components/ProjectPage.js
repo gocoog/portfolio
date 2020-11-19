@@ -102,7 +102,7 @@ export default function ProjectPage(props) {
                     }}
                 >
                     <Fade in={open}>
-                    <iframe className="video" width="760" height="515" src={props.project.demo} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe title="project-video" className="video" width="760" height="515" src={props.project.demo} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </Fade>
                 </Modal>
             </div>

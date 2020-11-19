@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
@@ -87,13 +87,6 @@ const useStyles = makeStyles((theme) => ({
                 subject: subject,
                 message: message
             };
-
-            const clear = () => {
-                setName('')
-                setEmail('')
-                setSubject('')
-                setMessage('')
-            }
             
             emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, templateParams, process.env.REACT_APP_USER_ID)
                 .then((response) => {
