@@ -11,6 +11,12 @@ import {
   Redirect,
 } from 'react-router-dom';
 
+const NoMatchPage = () => {
+  return (
+    <h3>404 - Not found</h3>
+  );
+};
+
 function App() {
   return (
     <div className="parent">
@@ -32,6 +38,8 @@ function App() {
             <Route>
               <Redirect to="/" />
             </Route>
+
+            <Route component={NoMatchPage} />
           </Switch>
       </BrowserRouter>
 
